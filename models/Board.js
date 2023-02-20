@@ -3,7 +3,8 @@ const oracledb = require('../models/Oracle');
 let boardsql = {
     insert: ' insert into board2 (bno, title, userid, contents) ' +
              ' values (bno2.nextval, :1, :2, :3)',
-    select: ' select bno, title, userid, views, regdate ' +
+    select: ' select bno, title, userid, views, ' +
+            ` to_char(regdate, 'YYYY-MM-DD') regdate ` +
             ' from board2 order by bno desc',
     selectOne: ' select * from board2 where bno = :1 ',
     update: ' update board2 set title = :1, contents = :2 ' +
@@ -40,21 +41,33 @@ class Board {
 
         return insertcnt;
     }
-    async select() {
+
+    async select() {  // 게시판 목록 출력
         let conn = null;
         let params = [];
-        let insertcnt = 0;
+        let bds = [];   // 결과 저장용
 
         try {
             conn = await oracledb.makeConn();
+            let result = await conn.execute(
+                boardsql.select, params, oracledb.options);
+            let rs = result.resultSet;
+
+            let row = null;
+            while((row = await rs.getRow())) {
+                let bd = new Board(row.BNO, row.TITLE,
+                    row.USERID, row.REGDATE, null, row.VIEWS);
+                bds.push(bd);
+            }
         } catch (e) {
             console.log(e);
         } finally {
             await oracledb.closeConn();
         }
 
-        return insertcnt;
+        return bds;
     }
+
     async selectOne() {
         let conn = null;
         let params = [];

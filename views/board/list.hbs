@@ -5,12 +5,13 @@
 
     .board td { text-align: center; padding: 7px }
     .board td:nth-child(2) { white-space: nowrap;
-        overflow: hidden; text-overflow: ellipsis }
-    .board th { padding:7px;
-        background: lightgoldenrodyellow }
+        overflow: hidden; text-overflow: ellipsis; }
+    .board th { padding:7px; background: lightgoldenrodyellow }
     .board tr:nth-child(odd) { background: #e4f7ba }
     .board tr:nth-child(even) { background: #cef279 }
     .alignrgt { text-align-last: right }
+    .board td:nth-child(2), .board th:nth-child(2) {
+        text-align: left }
 
     .pagenation { list-style: none; padding: 0;
         margin: 0 auto; width: 435px }
@@ -21,6 +22,12 @@
 {{/section}}
 
 {{#section 'script'}}
+<script>
+let newbtn = document.querySelector('#newbtn');
+newbtn.addEventListener('click', ()=>{
+    location.href = '/board/write';
+});
+</script>
 {{/section}}
 
 <main>
@@ -34,49 +41,15 @@
             <col style="width: 10%">
         </colgroup>
         <tr><td colspan="5" class="alignrgt">
-            <button type="button">새글쓰기</button></td></tr>
+            <button type="button" id="newbtn">새글쓰기</button></td></tr>
         <tr><th>번호</th><th>제목</th><th>작성자</th>
             <th>작성일</th><th>조회</th></tr>
-        <tr><td>1</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>2</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>3</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>4</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>5</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>6</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>7</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>8</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>9</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>10</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>11</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>12</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>13</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>14</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>15</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>16</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>17</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>18</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>19</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
-        <tr><td>20</td><td>시간은 금이라구, 친구!, 진짜라구, 친구, 정말이라구, 친구, 사실이라구, 친구!</td>
-            <td>zzyzzy</td><td>2022-12-10</td><td>123</td></tr>
+        {{#bds}}
+            <tr><td>{{bno}}</td>
+                <td><a href="/board/view?bno={{bno}}">{{title}}</a></td>
+                <td>{{userid}}</td><td>{{regdate}}</td>
+                <td>{{views}}</td></tr>
+        {{/bds}}
     </table>
 
     <ul class="pagenation"><li class="prev">이전</li>
