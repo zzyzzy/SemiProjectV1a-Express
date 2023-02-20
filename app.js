@@ -12,9 +12,11 @@ const indexRouter = require('./routes/index');
 const memberRouter = require('./routes/member');
 const boardRouter = require('./routes/board');
 
+
 // express 객체 생성 및 포트 변수 선언
 const app = express();
 const port = process.env.PORT || 3000;
+
 
 // 템플릿 엔진 등록 및 설정
 app.engine('hbs', engine({
@@ -29,11 +31,14 @@ app.engine('hbs', engine({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+
 // 라우팅 없이 바로 호출 가능하도록 static 폴더 설정
 app.use(express.static(path.join(__dirname, 'static')));
 
+
 // 서버 작동 현황 표시 - 로그 출력
 app.use(logger('dev'));
+
 
 // 미들웨어 관련 설정
 app.use(express.json());
@@ -42,10 +47,12 @@ app.use(bodyParser.json());
 
 oracledb.initConn();
 
+
 // 라우팅 모듈 등록 - 클라이언트 요청 처리 핵심 파트
 app.use('/', indexRouter);
 app.use('/member', memberRouter);
 app.use('/board', boardRouter);
+
 
 // 404, 500 응답코드에 대한 라우팅 처리 정의
 app.use((req, res) => {
@@ -57,6 +64,7 @@ app.use((err, req, res, next) => {
     res.status(500);
     res.send('500-서버 내부 오류 발생했어요!');
 });
+
 
 // 위에서 설정한 사항을 토대로 express 서버 실행
 app.listen(port, () => {
