@@ -17,7 +17,7 @@
 
             <div><label for="uid">작성자</label>
                 <input type="text" name="uid" id="uid"
-                       value="siestageek" readonly></div>
+                       value="{{ session.userid }}" readonly></div>
 
             <div><label for="contents" class="drgup">본문</label>
                 <textarea name="contents" id="contents"

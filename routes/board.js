@@ -11,7 +11,10 @@ router.get('/list', async (req, res) => {
 });
 
 router.get('/write', (req, res) => {
-    res.render('board/write', {title: '게시판 새글쓰기'});
+    if (!req.session.userid)
+        res.redirect(303, '/member/login');
+    else
+        res.render('board/write', {title: '게시판 새글쓰기'});
 });
 
 router.post('/write', async (req, res) => {
