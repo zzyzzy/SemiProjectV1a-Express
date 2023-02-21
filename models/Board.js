@@ -121,20 +121,23 @@ class Board {
         return insertcnt;
     }
 
-    async delete() {
+    async delete(bno) {
         let conn = null;
-        let params = [];
-        let insertcnt = 0;
+        let params = [bno];
+        let deletecnt = 0;
 
         try {
             conn = await oracledb.makeConn();
+            let result = await conn.execute(boardsql.delete, params);
+            await conn.commit();
+            if (result.rowsAffected > 0) deletecnt = result.rowsAffected;
         } catch (e) {
             console.log(e);
         } finally {
             await oracledb.closeConn();
         }
 
-        return insertcnt;
+        return deletecnt;
     }
 
 }
