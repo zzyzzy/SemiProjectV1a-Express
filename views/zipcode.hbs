@@ -13,12 +13,19 @@
         location.href = url;
     };
 
+    const getZipcode = () => {
+        let url = '?sido=' + sido.value + '&gugun=' + gugun.value
+                    + '&dong=' + dong.value;
+        location.href = url;
+    };
+
     let sido = document.querySelector('#sido');
     let gugun = document.querySelector('#gugun');
     let dong = document.querySelector('#dong');
 
     sido.addEventListener('change', getGugun);
     gugun.addEventListener('change', getDong);
+    dong.addEventListener('change', getZipcode);
 </script>
 <script>
     {{#if sido}}
@@ -26,6 +33,9 @@
     {{/if}}
     {{#if gugun}}
         document.querySelector('#gugun').value = '{{gugun}}';
+    {{/if}}
+    {{#if dong}}
+        document.querySelector('#dong').value = '{{dong}}';
     {{/if}}
 </script>
 {{/section}}
@@ -54,6 +64,9 @@
     </div>
 
     <div>
-        <p></p>
+        {{#zips}}
+            <p>{{zipcode}} {{sido}} {{gugun}} {{dong}}
+                {{ri}} {{bunji}}</p>
+        {{/zips}}
     </div>
 </main>
