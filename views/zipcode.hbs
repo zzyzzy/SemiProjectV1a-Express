@@ -8,17 +8,24 @@
         location.href = url;
     };
 
-    const getDong = () => {};
+    const getDong = () => {
+        let url = '?sido=' + sido.value + '&gugun=' + gugun.value;
+        location.href = url;
+    };
 
     let sido = document.querySelector('#sido');
     let gugun = document.querySelector('#gugun');
     let dong = document.querySelector('#dong');
 
     sido.addEventListener('change', getGugun);
+    gugun.addEventListener('change', getDong);
 </script>
 <script>
     {{#if sido}}
         document.querySelector('#sido').value = '{{sido}}';
+    {{/if}}
+    {{#if gugun}}
+        document.querySelector('#gugun').value = '{{gugun}}';
     {{/if}}
 </script>
 {{/section}}
